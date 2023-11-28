@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de IMC</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        #resultado {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Calculadora de IMC</h1>
+
+<form id="formularioIMC">
+    <label for="altura">Altura (metros): </label>  
+    <input type="text" id="altura" placeholder="Ingrese su altura" required>
+    <br>
+
+    <label for="peso">Peso (kilogramos): </label>
+    <input type="text" id="peso" placeholder="Ingrese su peso" required>
+    <br>
+
+    <button type="button" onclick="calcularIMC()">Calcular IMC</button>
+</form>
+
+<div id="resultado"></div>
+
+<script>
+    function calcularIMC() {
+        var altura = parseFloat(document.getElementById("altura").value);
+        var peso = parseFloat(document.getElementById("peso").value);
+
+        if (!isNaN(altura) && !isNaN(peso)) {
+            var imc = peso / (altura * altura);
+            mostrarResultado(imc);
+        } else {
+            alert("Por favor, ingrese valores numéricos válidos.");
+        }
+    }
+
+    function mostrarResultado(imc) {
+        var resultadoElement = document.getElementById("resultado");
+        resultadoElement.innerHTML = "Su índice de masa corporal (IMC) es: " + imc.toFixed(2);
+    }
+</script>
+
+</body>
+</html>
